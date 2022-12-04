@@ -70,19 +70,13 @@ OP_OS:     equ     036h
 OP_JS:     equ     07fh
 OP_J:      equ     080h
 
-org:       equ     2000h
+           org     1ffah
 
-           org     8000h
-           lbr     0ff00h
-           db      'sbc',0
-           dw      9000h
-           dw      endrom+9000h-org
            dw      org
-           dw      endrom-org
+           dw      end-org
            dw      org
-           db      0
 
-           org     2000h
+org:       org     2000h
            br      start
        
 include    date.inc
@@ -2433,4 +2427,6 @@ data:      ds      1
 buffer:    ds      256
 tokens:    ds      512
 lines:     ds      1024
+
+end:       ; the end
 
