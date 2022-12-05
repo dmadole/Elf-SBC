@@ -3028,17 +3028,20 @@ fildes:    db      0,0,0,0
            dw      0,0
            db      0,0,0,0
 
-base:      equ     $
-dta:       equ     $
-buffer:    equ     base
-program:   equ     base+512
+pstart:    ds      2
+mend:      ds      2
+pend:      ds      2
+intline:   ds      1
+intflag:   ds      1
 
-           org     7000h
-pstart:    equ     $
-mend:      equ     $+2
-pend:      equ     $+4
-intline:   equ     $+6
-intflag:   equ     $+7
-lfsr:      equ     $+8
+#ifdef BIT32
+lfsr:      ds      4
+#else
+lfsr:      ds      2
+#endif
+
+dta:       ds      0
+buffer:    ds      512
+program:   ds      0
 
 end:       ; the end
