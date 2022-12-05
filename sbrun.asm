@@ -14,33 +14,18 @@
 include    bios.inc
 include    kernel.inc
 
-org:       equ     2000h
 h_eot:     equ     0
 h_free:    equ     1
 h_used:    equ     2
 
-           org     8000h
-           lbr     0ff00h
-#ifdef BIT32
-           db      'sbrun32',0
-           dw      0d000h
-           dw      endrom+0d000h-org
+           org     1ffah
+
            dw      org
-           dw      endrom-org
+           dw      end-org
            dw      org
-           db      0
-#else
-           db      'sbrun',0
-           dw      0b000h
-           dw      endrom+0b000h-org
-           dw      org
-           dw      endrom-org
-           dw      org
-           db      0
-#endif
 
            org     2000h
-           br      start2
+org:       br      start2
 include    date.inc
 include    build.inc
            db      'Written by Michael H. Riley',0
@@ -3299,8 +3284,6 @@ fildes:    db      0,0,0,0
            dw      0,0
            db      0,0,0,0
 
-endrom:    equ     $
-
 base:      equ     $
 dta:       equ     $
 buffer:    equ     base
@@ -3315,3 +3298,4 @@ intflag:   equ     $+7
 heap:      equ     $+8
 lfsr:      equ     $+026h
 
+end:       ; the end

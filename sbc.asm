@@ -76,8 +76,8 @@ OP_J:      equ     080h
            dw      end-org
            dw      org
 
-org:       org     2000h
-           br      start
+           org     2000h
+org:       br      start
        
 include    date.inc
 include    build.inc
@@ -2415,7 +2415,6 @@ rtable2:   db      0bh,4,2,3,5,3,1bh,1ah,19h
 fileerr:   db      'File Error'
 crlf:      db      10,13,0
 err_msg:   db      'Error',10,13,0
-endrom:    equ     $
 
 ifname:    ds      32
 ofname:    ds      32
